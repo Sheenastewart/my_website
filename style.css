@@ -123,6 +123,13 @@ section {
   background: #ffe6f0;
 }
 
+.hero-credentials {
+  font-size: 0.95rem;
+  opacity: 0.95;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
 /* Project Section */
 .project-grid {
   display: grid;
@@ -173,9 +180,161 @@ section {
 
 
 
-/* Rates Section */
-.rates strong {
+/* Skills Section */
+.skills {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.skills-container {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-top: 3px solid #e60073;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-top: 2rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0;
+}
+
+.skill-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0 1.25rem;
+  border-right: 1px solid #f3bfd7;
+}
+
+.skill-card:first-child {
+  padding-left: 0;
+}
+
+.skill-card:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.skill-card h3 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid #fce4ec;
+  color: #000;
+  font-size: 0.95rem;
+  font-weight: 600;
+  min-height: 2.75em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.3;
+}
+
+.skill-list {
+  list-style: disc;
+  text-align: left;
+  margin: 0;
+  padding-left: 1.1rem;
+  padding-top: 0.25rem;
+}
+
+.skill-list li {
+  color: #222;
+  font-size: 0.9rem;
+  padding: 0.15rem 0;
+}
+
+.skill-list li::marker {
   color: #e60073;
+}
+
+@media (max-width: 900px) {
+  .skills-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem 0;
+  }
+
+  .skill-card {
+    flex: 1 1 calc(33.333% - 1rem);
+    min-width: 140px;
+    padding: 0 1rem;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .skill-card:not(:nth-child(3n)) {
+    border-right: 1px solid #f3bfd7;
+  }
+
+  .skill-card:nth-child(3n) {
+    padding-right: 0;
+  }
+
+  .skill-card:nth-child(3n + 1) {
+    padding-left: 0;
+  }
+
+  .skill-card:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-container {
+    padding: 1.25rem;
+  }
+
+  .skill-card {
+    flex: 1 1 calc(50% - 0.75rem);
+    border-right: none;
+  }
+
+  .skill-card:nth-child(odd) {
+    padding-left: 0;
+    border-right: 1px solid #f3bfd7;
+  }
+
+  .skill-card:nth-child(even) {
+    padding-right: 0;
+  }
+
+  .skill-card:last-child {
+    border-right: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .skills-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 260px;
+    padding: 0 0 1.25rem;
+    border-right: none;
+    border-bottom: 1px solid #f3bfd7;
+  }
+
+  .skill-card:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
 }
 
 /* Contact Form */
@@ -206,6 +365,51 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background: #cc005f;
+}
+
+.form-status {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.form-status--success {
+  background: #fff0f5;
+  border: 1px solid #f3bfd7;
+  color: #222;
+}
+
+.form-status--error {
+  background: #fff5f5;
+  border: 1px solid #e60073;
+  color: #222;
+}
+
+.contact-links a,
+.resume-links a {
+  color: #e60073;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.contact-links a:hover,
+.resume-links a:hover {
+  text-decoration: underline;
+}
+
+.resume-links {
+  margin-top: 2rem;
+}
+
+.resume-date {
+  color: #666;
+  font-style: italic;
+  margin-top: -0.25rem;
+}
+
+.resume-skills p {
+  margin-bottom: 0.5rem;
 }
 
 /* Footer */
@@ -318,4 +522,20 @@ footer {
 .resume ul {
   padding-left: 1.5rem;
   margin-top: 0.5rem;
+}
+
+.resume .btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #e60073;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.resume .btn:hover {
+  background: #cc005f;
 }
