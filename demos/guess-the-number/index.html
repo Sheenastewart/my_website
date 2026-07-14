@@ -4,9 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Guess the Number</title>
+  <link rel="stylesheet" href="../demo-nav.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="has-demo-nav">
+  <nav class="demo-nav">
+    <a href="../../#projects" class="demo-nav-back">← Portfolio</a>
+    <a href="../../" class="demo-nav-brand">Sheena Stewart</a>
+  </nav>
+  <main class="demo-content">
   <div class="container">
    <div class="ribbon">🎀</div>
 <h1>Guess My Favorite Number</h1>
@@ -17,6 +23,7 @@
     <div class="attempts" id="attempts"></div>
     <button id="resetButton">Play Again</button>
   </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
