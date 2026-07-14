@@ -164,69 +164,6 @@ section {
   font-weight: bold;
 }
 
-.demo-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  background: rgba(0, 0, 0, 0.65);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-
-.demo-modal[hidden] {
-  display: none;
-}
-
-.demo-modal-dialog {
-  width: min(1100px, 100%);
-  height: min(90vh, 900px);
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-}
-
-.demo-modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
-  border-bottom: 2px solid #eee;
-  background: #fff;
-}
-
-.demo-modal-title {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #e60073;
-}
-
-.demo-modal-close {
-  border: none;
-  background: transparent;
-  color: #e60073;
-  font-size: 1.75rem;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0.25rem 0.5rem;
-}
-
-.demo-modal-close:hover {
-  opacity: 0.75;
-}
-
-.demo-modal-frame {
-  flex: 1;
-  width: 100%;
-  border: none;
-  background: #fff;
-}
-
 @media (max-width: 768px) {
   .project-grid {
     display: flex;
