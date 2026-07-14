@@ -1,11 +1,15 @@
 body.has-demo-nav {
+  display: flex;
   flex-direction: column;
-  padding: 0;
+  justify-content: flex-start;
   align-items: stretch;
+  padding: 0;
+  min-height: 100vh;
 }
 
 .demo-nav {
   width: 100%;
+  flex-shrink: 0;
   background: #fff;
   border-bottom: 2px solid #eee;
   padding: 0.85rem 1.5rem;
@@ -14,14 +18,15 @@ body.has-demo-nav {
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   box-sizing: border-box;
 }
 
 .demo-nav-back {
   color: #000;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1rem;
   transition: color 0.3s;
 }
 
