@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const cells = document.querySelectorAll("[data-cell]");
-  const board = document.getElementById("board");
   const message = document.getElementById("message");
   const resetBtn = document.getElementById("resetBtn");
   const resetScoresBtn = document.getElementById("resetScores");
@@ -12,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentPlayer = "💖";
   let isGameOver = false;
-  let isSinglePlayer = false;
+  let vsComputer = false;
 
   let score = {
     "💖": 0,
@@ -30,26 +29,28 @@ document.addEventListener("DOMContentLoaded", () => {
     [2, 4, 6]
   ];
 
-  function setGameMode(singlePlayer) {
-    isSinglePlayer = singlePlayer;
+  function setGameMode(computerMode) {
+    vsComputer = computerMode;
 
-    modeToggleBtn.textContent = isSinglePlayer
+    modeToggleBtn.textContent = vsComputer
       ? "Switch to 2 Player Mode"
       : "Switch to 1 Player Mode";
 
-    scoreLabelDark.textContent = isSinglePlayer
+    scoreLabelDark.textContent = vsComputer
       ? "Computer (🖤):"
       : "Player 2 (🖤):";
 
-    modeLabel.textContent = isSinglePlayer
-      ? "Mode: You vs Computer"
-      : "Mode: Player 1 vs Player 2";
+    modeLabel.textContent = vsComputer
+      ? "Mode: 1 Player (You vs Computer)"
+      : "Mode: 2 Player (Player 1 vs Player 2)";
   }
 
   function initGame() {
     currentPlayer = "💖";
     isGameOver = false;
-    message.textContent = `Player ${currentPlayer}'s turn`;
+    message.textContent = vsComputer
+      ? "Your turn (💖)"
+      : `Player ${currentPlayer}'s turn`;
 
     cells.forEach(cell => {
       cell.textContent = "";
@@ -60,7 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function swapPlayer() {
     currentPlayer = currentPlayer === "💖" ? "🖤" : "💖";
-    message.textContent = `Player ${currentPlayer}'s turn`;
+    message.textContent = vsComputer && currentPlayer === "🖤"
+      ? "Computer is thinking..."
+      : `Player ${currentPlayer}'s turn`;
   }
 
   function checkWin() {
@@ -103,12 +106,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const cell = e.target;
     if (cell.textContent !== "" || isGameOver) return;
 
+    if (vsComputer && currentPlayer === "🖤") return;
+
     cell.textContent = currentPlayer;
     cell.setAttribute("data-taken", currentPlayer);
     cell.classList.add(currentPlayer === "💖" ? "heart-light" : "heart-dark");
 
     if (checkWin()) {
-      message.textContent = `Player ${currentPlayer} wins! 🎉`;
+      message.textContent = vsComputer && currentPlayer === "🖤"
+        ? "Computer wins! 🎉"
+        : `Player ${currentPlayer} wins! 🎉`;
       isGameOver = true;
       highlightWinner();
       updateScore(currentPlayer);
@@ -116,93 +123,81 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (checkDraw()) {
-      message.textContent = "It’s a draw!";
+      message.textContent = "It's a draw!";
       isGameOver = true;
       return;
     }
 
     swapPlayer();
 
-    if (isSinglePlayer && currentPlayer === "🖤") {
+    if (vsComputer && currentPlayer === "🖤") {
       setTimeout(computerMove, 400);
     }
   }
 
   function computerMove() {
-  if (isGameOver) return;
+    if (isGameOver) return;
 
-  const emptyCells = [...cells].filter(cell => cell.textContent === "");
-  let bestMove = null;
+    const emptyCells = [...cells].filter(cell => cell.textContent === "");
+    let bestMove = null;
 
-  // First: Try to win
-  bestMove = findBestMove("🖤");
-  // Then: Try to block 💖
-  if (!bestMove) bestMove = findBestMove("💖");
-  // Else: Pick random
-  if (!bestMove) bestMove = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    bestMove = findBestMove("🖤");
+    if (!bestMove) bestMove = findBestMove("💖");
+    if (!bestMove) bestMove = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
-  if (bestMove) {
-    bestMove.textContent = "🖤";
-    bestMove.setAttribute("data-taken", "🖤");
-    bestMove.classList.add("heart-dark");
+    if (bestMove) {
+      currentPlayer = "🖤";
+      bestMove.textContent = "🖤";
+      bestMove.setAttribute("data-taken", "🖤");
+      bestMove.classList.add("heart-dark");
 
-    if (checkWin()) {
-      message.textContent = "🖤 wins! (Computer)";
-      isGameOver = true;
-      highlightWinner();
-      updateScore("🖤");
-      return;
-    }
+      if (checkWin()) {
+        message.textContent = "Computer wins! 🎉";
+        isGameOver = true;
+        highlightWinner();
+        updateScore("🖤");
+        return;
+      }
 
-    if (checkDraw()) {
-      message.textContent = "It’s a draw!";
-      isGameOver = true;
-      return;
-    }
+      if (checkDraw()) {
+        message.textContent = "It's a draw!";
+        isGameOver = true;
+        return;
+      }
 
-    currentPlayer = "💖";
-    message.textContent = "Player 💖's turn";
-  }
-}
-//helper to win in computer mode
-function findBestMove(symbol) {
-  for (let combo of WINNING_COMBINATIONS) {
-    const [a, b, c] = combo;
-    const values = [cells[a], cells[b], cells[c]];
-
-    const marks = values.map(cell => cell.textContent);
-    const empties = values.filter(cell => cell.textContent === "");
-
-    if (marks.filter(mark => mark === symbol).length === 2 && empties.length === 1) {
-      return empties[0];
+      currentPlayer = "💖";
+      message.textContent = "Your turn (💖)";
     }
   }
-  return null;
-}
 
-  // Event listeners
+  function findBestMove(symbol) {
+    for (let combo of WINNING_COMBINATIONS) {
+      const [a, b, c] = combo;
+      const values = [cells[a], cells[b], cells[c]];
+
+      const marks = values.map(cell => cell.textContent);
+      const empties = values.filter(cell => cell.textContent === "");
+
+      if (marks.filter(mark => mark === symbol).length === 2 && empties.length === 1) {
+        return empties[0];
+      }
+    }
+    return null;
+  }
+
   cells.forEach(cell => cell.addEventListener("click", handleClick));
   resetBtn.addEventListener("click", initGame);
 
   resetScoresBtn.addEventListener("click", () => {
     score["💖"] = 0;
     score["🖤"] = 0;
- // Directly reset the displayed text
     scoreLight.textContent = "0";
     scoreDark.textContent = "0";
-
-
-    scoreLabelDark.textContent = isSinglePlayer
-      ? "Computer (🖤):"
-      : "Player 2 (🖤):";
-
-    modeLabel.textContent = isSinglePlayer
-      ? "Mode: You vs Computer"
-      : "Mode: Player 1 vs Player 2";
+    setGameMode(vsComputer);
   });
 
   modeToggleBtn.addEventListener("click", () => {
-    setGameMode(!isSinglePlayer);
+    setGameMode(!vsComputer);
     initGame();
   });
 
