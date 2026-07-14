@@ -1,3 +1,11 @@
+body.in-iframe .demo-nav {
+  display: none;
+}
+
+body.in-iframe .demo-content {
+  padding-top: 1rem;
+}
+
 body.has-demo-nav {
   display: flex;
   flex-direction: column;
