@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentPlayer = "💖";
   let isGameOver = false;
-  let vsComputer = false;
+  let vsComputer = true;
 
   let score = {
     "💖": 0,
