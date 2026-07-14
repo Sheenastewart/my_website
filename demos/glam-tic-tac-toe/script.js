@@ -30,6 +30,22 @@ document.addEventListener("DOMContentLoaded", () => {
     [2, 4, 6]
   ];
 
+  function setGameMode(singlePlayer) {
+    isSinglePlayer = singlePlayer;
+
+    modeToggleBtn.textContent = isSinglePlayer
+      ? "Switch to 2 Player Mode"
+      : "Switch to 1 Player Mode";
+
+    scoreLabelDark.textContent = isSinglePlayer
+      ? "Computer (🖤):"
+      : "Player 2 (🖤):";
+
+    modeLabel.textContent = isSinglePlayer
+      ? "Mode: You vs Computer"
+      : "Mode: Player 1 vs Player 2";
+  }
+
   function initGame() {
     currentPlayer = "💖";
     isGameOver = false;
@@ -186,22 +202,10 @@ function findBestMove(symbol) {
   });
 
   modeToggleBtn.addEventListener("click", () => {
-    isSinglePlayer = !isSinglePlayer;
-
-    modeToggleBtn.textContent = isSinglePlayer
-      ? "Switch to 2 Player Mode"
-      : "Switch to 1 Player Mode";
-
-    scoreLabelDark.textContent = isSinglePlayer
-      ? "Computer (🖤):"
-      : "Player 2 (🖤):";
-
-    modeLabel.textContent = isSinglePlayer
-      ? "Mode: You vs Computer"
-      : "Mode: Player 1 vs Player 2";
-
+    setGameMode(!isSinglePlayer);
     initGame();
   });
 
+  setGameMode(false);
   initGame();
 });
