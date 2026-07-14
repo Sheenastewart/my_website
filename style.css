@@ -342,6 +342,61 @@ section {
   }
 }
 
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-logo {
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1.25rem;
+  }
+
+  .skills-grid {
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+
+  .skill-card {
+    flex: none;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    padding: 0 0 1.25rem;
+    border-right: none;
+    border-bottom: 1px solid #f3bfd7;
+  }
+
+  .skill-card:nth-child(odd),
+  .skill-card:nth-child(even),
+  .skill-card:not(:nth-child(3n)),
+  .skill-card:nth-child(3n),
+  .skill-card:nth-child(3n + 1) {
+    padding-left: 0;
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .skill-card:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .skill-card h3 {
+    min-height: auto;
+  }
+}
+
 /* Contact Form */
 form {
   display: flex;
