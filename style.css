@@ -151,9 +151,15 @@ section {
   box-shadow: 0 8px 20px rgba(230, 0, 115, 0.2);
 }
 
-.project a {
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.project-links a {
   display: inline-block;
-  margin-top: 0.5rem;
   color: #e60073;
   font-weight: bold;
 }
@@ -172,9 +178,8 @@ section {
     align-items: center;
   }
 
-  .project a {
-    display: inline-block;
-    margin: 0.75rem auto 0;
+  .project-links {
+    justify-content: center;
   }
 }
 
@@ -445,6 +450,9 @@ footer {
 .about-photo img {
   width: 100%;
   max-width: 300px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center top;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -480,7 +488,7 @@ footer {
     text-align: center;
   }
 
-  .project a {
+  .project-links {
     margin-top: 1rem;
   }
 }
