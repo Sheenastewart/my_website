@@ -201,6 +201,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initGame();
   });
 
-  setGameMode(false);
+  setGameMode(true);
   initGame();
 });

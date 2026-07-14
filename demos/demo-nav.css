@@ -14,7 +14,7 @@ body.has-demo-nav {
   border-bottom: 2px solid #eee;
   padding: 0.85rem 1.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   position: sticky;
   top: 0;
@@ -23,27 +23,15 @@ body.has-demo-nav {
 }
 
 .demo-nav-back {
-  color: #000;
+  color: #e60073;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
-  transition: color 0.3s;
-}
-
-.demo-nav-back:hover {
-  color: #e60073;
-}
-
-.demo-nav-brand {
-  color: #e60073;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
   transition: opacity 0.3s;
 }
 
-.demo-nav-brand:hover {
-  opacity: 0.8;
+.demo-nav-back:hover {
+  opacity: 0.75;
 }
 
 .demo-content {
@@ -59,9 +47,5 @@ body.has-demo-nav {
 @media (max-width: 600px) {
   .demo-nav {
     padding: 0.75rem 1rem;
-  }
-
-  .demo-nav-brand {
-    font-size: 1rem;
   }
 }
