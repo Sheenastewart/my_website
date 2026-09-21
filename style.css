@@ -204,24 +204,38 @@ section {
 
 .skills-grid {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  gap: 0;
+  gap: 1.25rem 0;
 }
 
 .skill-card {
-  flex: 1;
+  box-sizing: border-box;
+  flex: 1 1 33.333%;
+  max-width: 33.333%;
   min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   padding: 0 1.25rem;
+  border-right: none;
+}
+
+.skill-card:not(:nth-child(3n)) {
   border-right: 1px solid #f3bfd7;
 }
 
 .skill-card:first-child {
   padding-left: 0;
+}
+
+.skill-card:nth-child(3n + 1) {
+  padding-left: 0;
+}
+
+.skill-card:nth-child(3n) {
+  padding-right: 0;
 }
 
 .skill-card:last-child {
@@ -238,7 +252,7 @@ section {
   color: #000;
   font-size: 0.95rem;
   font-weight: 600;
-  min-height: 2.75em;
+  min-height: 3.4em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -271,8 +285,10 @@ section {
   }
 
   .skill-card {
-    flex: 1 1 calc(33.333% - 1rem);
-    min-width: 140px;
+    box-sizing: border-box;
+    flex: 1 1 33.333%;
+    max-width: 33.333%;
+    min-width: 0;
     padding: 0 1rem;
     border-right: none;
     border-bottom: none;
@@ -302,7 +318,8 @@ section {
   }
 
   .skill-card {
-    flex: 1 1 calc(50% - 0.75rem);
+    flex: 1 1 50%;
+    max-width: 50%;
     border-right: none;
   }
 
