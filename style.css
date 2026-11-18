@@ -1,11 +1,19 @@
 /* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Keep in-page anchors (#projects, #contact, etc.) clear of the sticky navbar */
+.home-page section[id] {
+  scroll-margin-top: 7.5rem;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff;
   color: #000;
   line-height: 1.6;
-  scroll-behavior: smooth;
 }
 
 h1, h2, h3 {
@@ -558,8 +566,8 @@ footer {
 
 .about-text {
   order: 2;
-  flex: 1 1 60%;
-  min-width: 250px;
+  flex: 1 1 0;
+  min-width: 260px;
 }
 
 .about-text p {
@@ -571,17 +579,23 @@ footer {
   margin-bottom: 0;
 }
 
+.home-page .about {
+  max-width: 1000px;
+}
+
 .about-photo {
   order: 1;
-  flex: 1 1 35%;
-  min-width: 200px;
+  flex: 0 1 420px;
+  min-width: 220px;
+  max-width: 420px;
   padding-top: 0.15rem;
 }
 
 .about-photo img {
+  display: block;
   width: 100%;
-  max-width: 300px;
-  aspect-ratio: 1 / 1;
+  max-width: 400px;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center top;
   border-radius: 12px;
@@ -602,10 +616,18 @@ footer {
     order: unset;
     flex: 1 1 100%;
     min-width: auto;
+    max-width: none;
   }
 
   .about-photo img {
     margin: 0 auto;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 390px) {
+  .about-photo img {
+    max-width: 240px;
   }
 }
 

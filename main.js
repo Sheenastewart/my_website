@@ -1,10 +1,17 @@
-// Smooth scrolling for anchor links
+// In-page anchors: use native scrolling so html scroll-padding-top
+// (sticky navbar offset) is respected. Only intercept when a target exists.
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (!href || href === '#') return;
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (history.replaceState) {
+      history.replaceState(null, '', href);
     }
   });
 });
