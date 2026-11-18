@@ -536,38 +536,23 @@ footer {
 
 .home-page .about-subtitle {
   text-align: center;
-  margin: 0 auto 1.35rem;
-  max-width: 34rem;
-  color: #666;
-  font-size: 1rem;
+  margin: 0 auto 1.5rem;
+  max-width: 38rem;
+  color: #a35f7a;
+  font-size: 0.98rem;
   font-weight: 500;
-  line-height: 1.45;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
 }
 
 /* About Section */
 
-.about-resume-link {
-  margin-top: 1.1rem;
-  margin-bottom: 0;
-}
-
-.about-resume-link a {
-  color: #e60073;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.about-resume-link a:hover,
-.about-resume-link a:focus-visible {
-  text-decoration: underline;
-  outline: none;
-}
-
 .about-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
-  align-items: center;
+  gap: 2.25rem;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -577,10 +562,20 @@ footer {
   min-width: 250px;
 }
 
+.about-text p {
+  margin-bottom: 1.05rem;
+  line-height: 1.7;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
 .about-photo {
   order: 1;
   flex: 1 1 35%;
   min-width: 200px;
+  padding-top: 0.15rem;
 }
 
 .about-photo img {
