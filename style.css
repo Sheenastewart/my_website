@@ -213,18 +213,6 @@ a.nav-logo:focus-visible {
   outline: none;
 }
 
-.hero .btn-outline {
-  background: transparent;
-  color: #fff;
-  border-color: #fff;
-}
-
-.hero .btn-outline:hover,
-.hero .btn-outline:focus-visible {
-  background: #fff;
-  color: #e60073;
-}
-
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
