@@ -205,8 +205,19 @@ a.nav-logo:focus-visible {
 
 .hero-actions .btn {
   margin-top: 0;
-  padding: 0.5rem 1.15rem;
-  font-size: 0.9rem;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+.hero-actions .btn:hover,
+.hero-actions .btn:focus-visible {
+  background: #fff;
+  color: #e60073;
+  border-color: #fff;
+  outline: none;
 }
 
 .hero .btn:hover,
