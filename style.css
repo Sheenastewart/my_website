@@ -110,12 +110,18 @@ a.nav-logo:focus-visible {
 }
 
 .hero h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  max-width: 22ch;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: clamp(1.35rem, 2.1vw + 0.75rem, 2.15rem);
+  margin: 0 auto 1rem;
+  max-width: min(60rem, 100%);
+  padding: 0 1rem;
   line-height: 1.25;
+}
+
+@media (min-width: 900px) {
+  .home-page .hero h1 {
+    white-space: nowrap;
+    max-width: none;
+  }
 }
 
 .hero .hero-tagline {
@@ -174,39 +180,44 @@ a.nav-logo:focus-visible {
   margin-top: 1.35rem;
 }
 
-.hero-social {
+/* Shared LinkedIn / GitHub icon links */
+.social-links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 1.25rem;
-  margin-top: 1.15rem;
+  margin-top: 1.35rem;
 }
 
-.hero-social a {
+.social-links a {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: #fff;
+  color: #e60073;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
-  opacity: 0.95;
-  transition: opacity 0.25s ease;
+  transition: color 0.25s ease, opacity 0.25s ease;
 }
 
-.hero-social a:hover,
-.hero-social a:focus-visible {
-  opacity: 1;
+.social-links a:hover,
+.social-links a:focus-visible {
+  color: #cc005f;
   text-decoration: underline;
   outline: none;
 }
 
-.hero-social .social-icon {
+.social-links .social-icon {
   width: 1.15rem;
   height: 1.15rem;
   display: block;
   flex-shrink: 0;
+}
+
+.social-links--on-light {
+  margin-top: 1.15rem;
+  margin-bottom: 0.85rem;
 }
 
 /* Project Section */
@@ -300,77 +311,43 @@ a.nav-logo:focus-visible {
 
 
 
-/* Skills Section */
+/* Skills Section — CSS Grid */
 .skills {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   text-align: center;
 }
 
-.skills-container {
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-top: 3px solid #e60073;
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  margin-top: 2rem;
-}
-
 .skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.75rem;
   align-items: stretch;
-  gap: 1.25rem 0;
 }
 
 .skill-card {
   box-sizing: border-box;
-  flex: 1 1 33.333%;
-  max-width: 33.333%;
-  min-width: 0;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  padding: 0 1.25rem;
-  border-right: none;
-}
-
-.skill-card:not(:nth-child(3n)) {
-  border-right: 1px solid #f3bfd7;
-}
-
-.skill-card:first-child {
-  padding-left: 0;
-}
-
-.skill-card:nth-child(3n + 1) {
-  padding-left: 0;
-}
-
-.skill-card:nth-child(3n) {
-  padding-right: 0;
-}
-
-.skill-card:last-child {
-  border-right: none;
-  padding-right: 0;
+  background: #fff;
+  border: 1px solid #f3bfd7;
+  border-top: 3px solid #e60073;
+  border-radius: 10px;
+  padding: 1.15rem 1.2rem 1.25rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  min-width: 0;
+  text-align: left;
 }
 
 .skill-card h3 {
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.65rem;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.55rem;
   border-bottom: 1px solid #fce4ec;
-  color: #000;
-  font-size: 0.95rem;
-  font-weight: 600;
-  min-height: 3.4em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #111;
+  font-size: 0.98rem;
+  font-weight: 700;
   line-height: 1.3;
 }
 
@@ -379,98 +356,28 @@ a.nav-logo:focus-visible {
   text-align: left;
   margin: 0;
   padding-left: 1.1rem;
-  padding-top: 0.25rem;
 }
 
 .skill-list li {
   color: #222;
-  font-size: 0.9rem;
-  padding: 0.15rem 0;
+  font-size: 0.92rem;
+  padding: 0.18rem 0;
+  overflow-wrap: anywhere;
 }
 
 .skill-list li::marker {
   color: #e60073;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .skills-grid {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.25rem 0;
-  }
-
-  .skill-card {
-    box-sizing: border-box;
-    flex: 1 1 33.333%;
-    max-width: 33.333%;
-    min-width: 0;
-    padding: 0 1rem;
-    border-right: none;
-    border-bottom: none;
-  }
-
-  .skill-card:not(:nth-child(3n)) {
-    border-right: 1px solid #f3bfd7;
-  }
-
-  .skill-card:nth-child(3n) {
-    padding-right: 0;
-  }
-
-  .skill-card:nth-child(3n + 1) {
-    padding-left: 0;
-  }
-
-  .skill-card:last-child {
-    border-right: none;
-    padding-right: 0;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .skills-container {
-    padding: 1.25rem;
-  }
-
-  .skill-card {
-    flex: 1 1 50%;
-    max-width: 50%;
-    border-right: none;
-  }
-
-  .skill-card:nth-child(odd) {
-    padding-left: 0;
-    border-right: 1px solid #f3bfd7;
-  }
-
-  .skill-card:nth-child(even) {
-    padding-right: 0;
-  }
-
-  .skill-card:last-child {
-    border-right: none;
-  }
-}
-
-@media (max-width: 420px) {
   .skills-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .skill-card {
-    flex: 1 1 100%;
-    width: 100%;
-    max-width: 260px;
-    padding: 0 0 1.25rem;
-    border-right: none;
-    border-bottom: 1px solid #f3bfd7;
-  }
-
-  .skill-card:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -490,42 +397,6 @@ a.nav-logo:focus-visible {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.75rem 1.25rem;
-  }
-
-  .skills-grid {
-    flex-direction: column;
-    align-items: stretch;
-    flex-wrap: nowrap;
-    gap: 0;
-  }
-
-  .skill-card {
-    flex: none;
-    width: 100%;
-    max-width: none;
-    min-width: 0;
-    padding: 0 0 1.25rem;
-    border-right: none;
-    border-bottom: 1px solid #f3bfd7;
-  }
-
-  .skill-card:nth-child(odd),
-  .skill-card:nth-child(even),
-  .skill-card:not(:nth-child(3n)),
-  .skill-card:nth-child(3n),
-  .skill-card:nth-child(3n + 1) {
-    padding-left: 0;
-    padding-right: 0;
-    border-right: none;
-  }
-
-  .skill-card:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-
-  .skill-card h3 {
-    min-height: auto;
   }
 }
 
@@ -580,20 +451,8 @@ button[type="submit"]:hover {
   color: #222;
 }
 
-.contact-links a,
-.resume-links a {
-  color: #e60073;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.contact-links a:hover,
-.resume-links a:hover {
-  text-decoration: underline;
-}
-
-.resume-links {
-  margin-top: 2rem;
+.contact .social-links {
+  margin-top: 1.5rem;
 }
 
 .resume-date {
@@ -615,11 +474,18 @@ footer {
   margin-top: 2rem;
 }
 
-/* About Section */
-.about > h2 {
+/* Homepage section heading alignment */
+.home-page .about > h2,
+.home-page .skills > h2,
+.home-page .projects > h2,
+.home-page .contact > h2 {
   text-align: center;
   width: 100%;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
 }
+
+/* About Section */
 
 .about-resume-link {
   margin-top: 1.1rem;
@@ -1048,30 +914,33 @@ footer {
 .resume-page .credential-download {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.35rem;
+  width: fit-content;
   margin-top: 0.75rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: 20px;
-  border: 1.5px solid #e60073;
-  background: #fff;
-  color: #e60073;
-  font-size: 0.85rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 2px solid #e60073;
+  background: #e60073;
+  color: #fff;
+  font-size: 0.82rem;
   font-weight: 700;
   text-decoration: none;
   line-height: 1.2;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .resume-page .credential-download:hover,
 .resume-page .credential-download:focus-visible {
-  background: #e60073;
+  background: #cc005f;
+  border-color: #cc005f;
   color: #fff;
   outline: none;
 }
 
 .resume-page .credential-download-icon {
-  width: 0.95rem;
-  height: 0.95rem;
+  width: 0.9rem;
+  height: 0.9rem;
   flex-shrink: 0;
 }
 
@@ -1117,12 +986,16 @@ footer {
   background: #ffe6f0;
 }
 
-.resume-page .resume-download-final .resume-links {
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
+.resume-page .resume-download-final .social-links {
+  margin-top: 1.15rem;
+  margin-bottom: 0.85rem;
 }
 
 @media (max-width: 850px) {
+  .home-page .hero h1 {
+    font-size: clamp(1.35rem, 5vw, 1.85rem);
+  }
+
   .resume-page .expertise-grid,
   .resume-page .credentials-grid {
     grid-template-columns: 1fr;
