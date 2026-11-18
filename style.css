@@ -688,32 +688,29 @@ footer {
    Resume page (scoped) — does not alter other pages
    ========================================================= */
 .resume-page .resume-hero {
-  padding: 3.5rem 1.25rem 3.75rem;
+  padding: 2.75rem 1.25rem 2.5rem;
   text-align: center;
 }
 
 .resume-page .resume-hero h1 {
   max-width: 40rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 0.85rem;
   line-height: 1.2;
   text-align: center;
 }
 
 .resume-page .resume-hero-sub {
-  max-width: 46rem;
-  margin: 0 auto 1rem;
-  font-size: 1.05rem;
-  font-weight: 500;
+  max-width: 36rem;
+  margin: 0 auto;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.55;
+  opacity: 0.96;
   text-align: center;
 }
 
-.resume-page .resume-hero-support {
-  max-width: 42rem;
-  margin: 0 auto;
-  font-size: 0.98rem;
-  opacity: 0.95;
-  text-align: center;
+.resume-page .resume-hero .btn {
+  margin-top: 1.25rem;
 }
 
 .resume-page .resume-section {
@@ -1034,20 +1031,9 @@ footer {
   background: #cc005f;
 }
 
-.resume-page .resume-download-final .btn-secondary {
-  background: #fff;
-  color: #e60073;
-  border: 2px solid #e60073;
-  margin-left: 0.5rem;
-}
-
-.resume-page .resume-download-final .btn-secondary:hover {
-  background: #ffe6f0;
-}
-
 .resume-page .resume-download-final .social-links {
   margin-top: 1.15rem;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0;
 }
 
 @media (max-width: 850px) {
@@ -1079,12 +1065,6 @@ footer {
 
   .resume-page .experience-item::before {
     left: calc(-1rem - 7px);
-  }
-
-  .resume-page .resume-download-final .btn-secondary {
-    display: inline-block;
-    margin-left: 0;
-    margin-top: 0.75rem;
   }
 }
 
